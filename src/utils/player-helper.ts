@@ -1,4 +1,3 @@
-import { getTimezoneOffset } from 'date-fns-tz';
 
 
 export function getPlayerPosition(index: number): string {

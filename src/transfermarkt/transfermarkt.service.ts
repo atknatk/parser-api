@@ -45,7 +45,7 @@ export class TransfermarktService {
             substitutions: [],
             cards: []
         };
-    
+        
         // Basic match info
         const scoreText = $('.sb-endstand').first().text().trim();
         const firstHalfText = $('.sb-halbzeit').first().text().trim();

@@ -1,8 +1,10 @@
-import changeCase from 'change-case';
+import {
+    camelCase
+  } from "change-case";
 
   
 export function sanitizePropertyName(name: string): string {
-    return changeCase.camelCase(name
+    return camelCase(name
         .trim()
         .toLowerCase()
         .replace(/\s+/g, '_'));
