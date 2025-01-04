@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import * as cheerio from 'cheerio';
 import { parseDateTimeToUTC } from 'src/utils/date-helper';
-import { parseTeamString, sanitizePropertyName } from 'src/utils/string-helper';
+import { normalizeSpaces, parseTeamString, sanitizePropertyName } from 'src/utils/string-helper';
 
 @Injectable()
 export class TransfermarktService {
@@ -11,7 +11,7 @@ export class TransfermarktService {
         const $ = cheerio.load(html);
         const rows = [];
         const table = $(selector);
-
+        const league = Number(normalizeSpaces($('.content-box-headline').text().trim()).split('.')[0]);
         if (!table.length) {
             throw new Error('Tablo bulunamadı!');
         }
@@ -35,7 +35,7 @@ export class TransfermarktService {
                 const element = $(td);
 
                 // Hücre metni
-                const text = element.text().trim();
+                const text = normalizeSpaces(element.text().trim());
 
                 // Link ve Title değerlerini ayıkla
                 const link = element.find('a').attr('href') || null;
@@ -78,6 +78,7 @@ export class TransfermarktService {
             if (row['home_team_orig'] && Object.keys(row)?.length > 1) {
                 idx++;
                 row['idx'] = idx;
+                row['league_week'] = league;
                 rows.push(row);
             }
         });

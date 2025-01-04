@@ -6,6 +6,13 @@ export function sanitizePropertyName(name: string): string {
 }
 
 
+export function normalizeSpaces(dateStr) {
+    // Replace multiple spaces with a single space and trim
+    return dateStr.replace(/\s+/g, ' ').trim();
+}
+
+
+
 export function parseTeamString(str: string): { rank: number | null; team: string } {
  // Regular expressions to match both formats
  const rankBeforeRegex = /^\((\d+\.)\)\s*(.+)$/;  // matches "(11.) Bari"
