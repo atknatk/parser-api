@@ -23,7 +23,7 @@ jobs:
         jq ".version = \"$new_version\"" package.json > temp.json && mv temp.json package.json
         echo "::set-output name=new_version::$new_version"
 
-    # Güncellenmiş package.json'ı commit et ve push yap
+    # Güncellenmiş package.json'ı commit et ve push yap 
     - name: Commit new version
       env:
         PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
