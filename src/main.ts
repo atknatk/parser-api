@@ -13,7 +13,7 @@ async function bootstrap() {
     .setTitle('Extract HTML API')
     .setDescription('Extracts HTML elements based on the provided CSS class or ID selector.')
     .setVersion('1.0')
-    .addServer('https://html-extractor-api.wodoxo.com')
+    .addServer('https://extractor-api.wodoxo.com')
     .addTag('HTML')
     .build();
 

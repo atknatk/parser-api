@@ -3,7 +3,7 @@ import { ParserService } from './parser.service';
 import { ExtractHtmlDto } from './dto/extract-html.dto';
 import { ApiBody, ApiResponse } from '@nestjs/swagger';
 
-@Controller('html-parser')
+@Controller('parser')
 export class ParserController {
     constructor(private readonly parserService: ParserService) { }
 
